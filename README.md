@@ -19,7 +19,7 @@ const app = express();
 app.get('/api/trade-orders', (req, res) => {
     // lógica para obtener las órdenes con GET;
     res.json(orders);   // Respondemos al cliente con la lista de órdenes de json.
-}); 
+}); ```
 
 2. **You work for a Customer Relationship Management (CRM) company. The company's clients gain CRM access through a RESTful API. The CRM allows clients to add contact information for customers, prospects, and related persons (e.g., virtual assistants or marketing directors). You want to choose an appropriate API request path so clients can easily retrieve information for a single contact while also being flexible for future software changes.**
 
