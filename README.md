@@ -42,3 +42,28 @@ app.get('/api/contacts/:contact_id', (req, res) => {
     res.json(contact); // Respondemos al cliente con la información del contacto en fomato JSON.
 });
 ```
+3. **You work for a large social media network, and you've been tasked with error handling for the API. You're trying to decide on an appropriate errorcode for
+authentication failures based on non-existent users and incorrect passwords. You want to balance security against brute force attacks with providing descriptive
+and true error codes.**
+
+Which HTTP error code(s) should you use to keep the system secure and still report that an error occurred?
+- **Respuesta:** 404 if the user doesn't exist, and 403 if the password is wrong.
+- **Explicación:** Permite ocultar la existencia de usuarios (utilizando 404) mientras se indica que las credenciales proporcionadas son incorrectas (utilizando 403). Esto ayuda a evitar que atacantes obtengan información sobre usuarios válidos mientras que el sistema aún responde adecuadamente a fallos de autenticación.
+
+- **Ejemplo:**
+```
+// Ruta para autenticar a un usuario
+app.post('/api/authenticate', (req, res) => {
+    const username = req.body.username; // Obtener nombre del ususario
+    const user = {}; // Buscar el usuario en la base de datos
+
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' }); // Si no encontramos el usuario mostramos error 404}
+
+    const passwordValid = false; // Verificar la contraseña que este correcta sino:
+    if (!passwordValid) {
+        return res.status(403).json({ error: 'Invalid password' }); // Si incorrecta se muestra error 403
+    }
+    res.status(200).json({ message: 'Authenticated successfully' }); // Si todo es correcto se muestra 200
+});
+```
