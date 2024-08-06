@@ -19,8 +19,8 @@ const app = express();
 app.get('/api/trade-orders', (req, res) => {
     // lógica para obtener las órdenes con GET;
     res.json(orders);   // Respondemos al cliente con la lista de órdenes de json.
-}); ```
-
+});
+```
 2. **You work for a Customer Relationship Management (CRM) company. The company's clients gain CRM access through a RESTful API. The CRM allows clients to add contact information for customers, prospects, and related persons (e.g., virtual assistants or marketing directors). You want to choose an appropriate API request path so clients can easily retrieve information for a single contact while also being flexible for future software changes.**
 
 Which of the following API paths should you use?
@@ -33,7 +33,7 @@ En comparación con las otras opciones:
 /customers/all solo devuelve todos los clientes, no permite buscar un contacto específico.
 
 - **Ejemplo:**
-
+```
 // Ruta para obtener un solo contacto usando su ID
 app.get('/api/contacts/:contact_id', (req, res) => {
     const contactId = req.params.contact_id; // Obtenemos el ID del contacto de la URL
@@ -41,3 +41,4 @@ app.get('/api/contacts/:contact_id', (req, res) => {
     const contact = { id: contactId, name: "Juan" }; //objeto se generara a partir de una base de datos 
     res.json(contact); // Respondemos al cliente con la información del contacto en fomato JSON.
 });
+```
