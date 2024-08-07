@@ -81,8 +81,9 @@ GET /api/users/123e4567-e89b-12d3-a456-426614174000
 5.**Estás construyendo código para manejar errores emitidos por un servidor API remoto. La respuesta puede o no contener un error.**
 ¿Cuánto trabajo debería manejar tu método handleErrors(response)?
 
-- **Respuesta:** Verificar la presencia de un error. Si existe, asignar el error a una propiedad de la clase, luego lanzar una excepción.
-- **Explicación:** 
+- **Respuesta:** Verificar la presencia de un error. Si existe, lanzar una excepción con el error.
+- **Explicación:** Primero, el método debe revisar si la respuesta de la API contiene un error, si se detecta un error, lanzar una excepción con la información del error es una práctica. proporciona un manejo de errores efectivo y claro al lanzar una excepción cuando se detecta un error, permitiendo que el sistema reaccione y maneje el error de manera centralizada y consistente.
+  
 - **Ejemplo**
 ```
 function handleErrors(response) {
