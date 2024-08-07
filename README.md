@@ -7,7 +7,7 @@
 ¿Qué verbo deberías elegir para recuperar órdenes de comercio con la API?
    - **Respuesta:** GET
    - **Explicación:** `GET` verbo para operaciones de solo lectura porque es diseñado para recuperar datos sin modificar el estado del recurso. Este método se usa para leer o recuperar datos del servidor
-   - 
+     
 - **Ejemplo:**
   
 ```javascript
@@ -45,8 +45,8 @@ app.get('/api/contacts/:contact_id', (req, res) => {
 3. **Trabajas para una gran red social y se te ha asignado la tarea de manejar errores para la API. Estás tratando de decidir un código de error apropiado para fallos de autenticación basados en usuarios inexistentes y contraseñas incorrectas. Quieres equilibrar la seguridad contra ataques de fuerza bruta con proporcionar códigos de error descriptivos y precisos.**
 ¿Qué código(s) de error HTTP deberías usar para mantener el sistema seguro y al mismo tiempo informar que ocurrió un error?
 
-- **Respuesta:** 404 if the user doesn't exist, and 403 if the password is wrong.
-- **Explicación:** Permite ocultar la existencia de usuarios (utilizando 404) mientras se indica que las credenciales proporcionadas son incorrectas (utilizando 403). Esto ayuda a evitar que atacantes obtengan información sobre usuarios válidos mientras que el sistema aún responde adecuadamente a fallos de autenticación.
+- **Respuesta:** 404 si el usuario no existe, y 403 si la contraseña es incorrecta.
+- **Explicación:**  404 indica que el recurso solicitado no se encuentra en el servidor es decir oculta la existencia de usuarios (utilizando 404) mientras se indica indica que el servidor entiende la solicitud, pero se niega a autorizarla, que las credenciales proporcionadas son incorrectas (utilizando 403). 
 
 - **Ejemplo:**
 ```
@@ -71,6 +71,7 @@ Verdadero o falso: Deberías poner un UUID falso en el código de ejemplo (en lu
 - **Respuesta:** True
 - **Explicación:** Poner un UUID falso en el código de ejemplo es una buena práctica porque proporciona una representación realista de cómo se vería un UUID. Esto ayuda a los usuarios a entender mejor cómo deben formatear y usar los UUIDs en sus solicitudes
 - **Ejemplo**
+
 ```
   // Ejemplo de un UUID que se podría usar en la documentación:
 GET /api/users/123e4567-e89b-12d3-a456-426614174000
@@ -121,13 +122,15 @@ class DatabaseDriver {
 7.**Necesitas nombrar el método privado en tu clase que maneja el recorrido de productos de comercio electrónico para recopilar y analizar datos. Estos datos se almacenan en un arreglo y se configuran como una propiedad de la clase.**
 ¿Cuál de las siguientes opciones deberías usar para nombrar tu método?
 - **Respuesta:** _collectAndParseProducts.
-- **Explicación:** Indica claramente que el método se encarga tanto de la recopilación como del análisis de los productos
+- **Explicación:** Indica que el método se encarga tanto de la recopilación como del análisis de los productos
 
 8.**Hay múltiples lugares en tu base de código que necesitan acceder a la base de datos. Para acceder a la base de datos, necesitas proporcionar credenciales. Quieres equilibrar la seguridad con la facilidad de uso.**
 ¿Qué estrategia deberías usar para almacenar y acceder a estas credenciales?
 - **Respuesta:** Poner las credenciales en un archivo .env, cargar los datos desde él en un sistema de configuración, y luego solicitar las credenciales a un proveedor de servicios de base de datos es la más adecuada
 - **Explicación:** el uso de archivos .env para almacenar información sensible, y gestionar las credenciales de manera centralizada reduce el riesgo de exposición accidental de las credenciales y simplifica su administración.
+  
 **Ejemplo**
+```
 - // Obtenemos las credenciales desde el archivo .env
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
@@ -136,3 +139,4 @@ function connectToDatabase() {
     // usa las credenciales obtenidas para realizar una conexión a la base de datos
     console.log(`Conectando a la base de datos con el usuario: ${DB_USER}`);
 }
+```
